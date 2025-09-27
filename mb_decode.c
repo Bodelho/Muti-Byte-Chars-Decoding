@@ -58,7 +58,7 @@ typedef struct {
                               __UTFS("OK")                                                                         },
 
         { "\xA1",             __UTFS("1000 0000"),
-                              __UTFS("invalid, ISO-8859-1: ก"),
+                              __UTFS("invalid, ISO-8859-1: ยก"),
                               __UTFS("ERR: valid mb chars don't have primary byte's higher bit set followed by 0") },
 
         { "\xF8",             __UTFS("1111 1000"),
@@ -78,7 +78,7 @@ typedef struct {
                               __UTFS("ERR: invalid secondary char signature in a 2-byte multi byte char")          },
 
         { "\xC2\xA1",         __UTFS("1100 0010 1010 0001"),
-                              __UTFS("ISO-8859-1: ก"),
+                              __UTFS("ISO-8859-1: ยก"),
                               __UTFS("OK")                                                                         },
 
         { "\xE0\xA1\xB0",     __UTFS("1110 0010 1010 0001 1011 0000"),
@@ -299,7 +299,7 @@ int main(void) {
              * Failed to use LC_ALL as locale setting for LC_CTYPE.
              * Assumption: LANG is valid if set.
             */
-            if (locale = getenv("LANG")) {
+            if (!(locale = getenv("LANG"))) {
                 /*
                  * Failed to use LANG as locale setting for LC_CTYPE.
                  * Last resort: use built-in default
